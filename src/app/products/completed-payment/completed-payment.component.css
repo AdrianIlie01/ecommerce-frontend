@@ -1,0 +1,143 @@
+/* Stilurile pentru bifa */
+.checkmark-container {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.checkmark {
+  margin-top: 80px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%; /* Transformă elementul într-un cerc */
+  border: 10px solid rgb(82,174,48); /* Adăugați o margine verde de 2px */
+  background-color: white; /* Culoarea de fundal alb */
+  position: relative;
+  display: inline-block;
+  margin-bottom: 80px;
+}
+
+/* Stilurile pentru "checkmark" */
+.checkmark::after {
+  content: '\2713'; /* Caracterul Unicode pentru "checkmark" */
+  /*font-family: Arial, sans-serif; !* Alegeți o fontă care include caracterul Unicode *!*/
+  font-size: 5rem;
+  font-weight: bold;
+  color: rgb(82,174,48); /* Culoarea "checkmark"-ului */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+#bold-text {
+  text-align: center;
+  font-weight: bold;
+  font-size: 3rem;
+  margin-bottom: 40px;
+}
+
+#normal-text {
+  margin-top: -5px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+#spam-text {
+  color: red;
+
+  margin-top: -5px;
+  text-align: center;
+  font-size: 2rem;
+}
+
+#next-btn {
+  margin-top: 150px;
+  background-color: rgb(82,174,48);
+  color: white;
+  flex-grow: 1;
+  border: none!important;
+  border-radius: 50px;
+
+  padding: 15px 50px;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+#next-btn:hover {
+  background-color: rgba(93, 192, 58, 0.8);
+}
+
+@media (orientation: portrait) {
+  #bold-text {
+    margin-top: 50px;
+    margin-left: 5px;
+    margin-right: 5px;
+    font-size: 1.8rem;
+  }
+
+  #normal-text {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.5rem;
+  }
+
+
+  #spam-text {
+    margin-top: 30px;
+    margin-bottom: -40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.5rem;
+  }
+
+  #next-btn {
+    margin-top: 60px;
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 350px) and (max-width: 400px) {
+  #bold-text {
+    margin-top: 50px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.8rem;
+  }
+
+  #normal-text {
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.5rem;
+  }
+
+  #spam-text {
+    margin-top: 50px;
+    margin-bottom: -40px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 1.5rem;
+  }
+}
+
+@media (min-width: 500px) {
+  #spam-text {
+    margin-top: 80px;
+    margin-bottom: -40px;
+    margin-left: 10px;
+    margin-right: 10px;
+  }
+}
+
+@media (min-width: 600px) {
+  #spam-text {
+    margin-bottom: -50px;
+  }
+
+  #next-btn {
+    margin-top: 80px;
+  }
+}

@@ -1,0 +1,24 @@
+<div class="bck-container">
+  <div class="title-cart">
+    <p class="title">Online Shop</p>
+
+    <span (click)="redirectToCart()" class="icon"
+      ><fa-icon icon="shopping-cart"></fa-icon
+    ></span>
+  </div>
+
+  <div class="product-list">
+    <div
+      (click)="redirectToProduct(product.name)"
+      class="product-card"
+      *ngFor="let product of products"
+    >
+      <img [src]="getThumbnailUrl(product.image)" alt="Product Image" />
+      <h2>{{ product.name }}</h2>
+      <p>{{ product.description }}</p>
+      <button class="view-product" (click)="redirectToProduct(product.name)">
+        Details
+      </button>
+    </div>
+  </div>
+</div>
