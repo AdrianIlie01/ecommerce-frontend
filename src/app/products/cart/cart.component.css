@@ -11,6 +11,9 @@
   padding: 10px;
   margin: 10px;
   width: 95%;
+  background-color: rgba(252, 254, 189, 0.1);
+
+  border-radius: 12px
 }
 
 .product-info {
@@ -18,13 +21,22 @@
   align-items: center;
 }
 
-img {
-  width: 25%;
+
+.product-image {
+  width: 120px;
+  height: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border-radius: 15px;
   margin-right: 10px;
 }
 
 .text-info {
   flex-grow: 1;
+}
+
+.value {
+  color: #FCFEBD;
 }
 
 .value-container {
@@ -38,8 +50,10 @@ img {
 
   border: 2px solid #f10c0c;
   border-radius: 20px;
-  background-color: white;
+  background-color: #f10c0c;
   padding: 10px 20px;
+  /*color: #4d0303;*/
+  color: wheat;
 
   margin-bottom: 15px;
   margin-top: 10px;
@@ -47,7 +61,8 @@ img {
 
 .delete-btn:hover {
   cursor: pointer;
-  background-color:#f10c0c;
+  border: 2px solid #ff0000;
+  background-color: #ff0000;
   color: white;
 }
 
@@ -79,24 +94,28 @@ img {
 }
 
 .value, .value-container button {
-  font-size: 1.1rem;
+  font-size: 1.2rem;
 }
 
 #title {
   text-align: center;
   font-weight: bold;
-  font-size: 1.5rem;
+  font-size: 1.7rem;
+  color: #FCFEBD;
 }
 
 h2 {
   font-size: 1.3rem;
+  color: #FCFEBD;
+  margin-left: 15px;
 }
 
 #price {
+  width: 98%;
+  text-align: right;
   font-size: 1.1rem;
   font-weight: bold;
-  color: green;
-  margin-left: 10px;
+  color: #11de11;
 }
 
 #continue-container {
@@ -117,9 +136,12 @@ h2 {
 
 #continue, #products, #pay {
   font-size: 1rem;
-  border: 2px solid #4ec94e;
+  border: 2px solid #45c745;
+  background-color: #45c745;
+
+  color: #FCFEBD;
   border-radius: 20px;
-  background-color: white;
+
   padding: 10px 20px;
   width: 250px;
   margin-bottom: 15px;
@@ -127,7 +149,7 @@ h2 {
 
 #continue:hover, #products:hover, #pay:hover {
   cursor: pointer;
-  background-color: #4ec94e;
+  background-color: #03f503;
   color: white;
 }
 
@@ -174,7 +196,7 @@ h2 {
   /*margin-top: 250px;*/
   font-size: 1.5rem;
   font-weight: bold;
-  color: red;
+  color: #FCFEBD;
 }
 
 
@@ -204,6 +226,7 @@ form {
 label {
   font-weight: bold;
   font-size: 1.3rem;
+  color: white;
 }
 
 input {
@@ -212,12 +235,13 @@ input {
 
 
   /*border: none;*/
-  border: 1px solid rgb(153, 136, 136, 0.5);
-  border-radius: 5px;
+  border: 1px solid rgb(252, 254, 2, 0.5);
+  border-radius: 15px;
   box-shadow: 0px 0px 5px 0px rgba(153, 136, 136, 0.5);
   padding-left: 15px;
   font-size: 16px;
-
+  background-color: rgba(252, 254, 189, 0.9);
+  color: black;
 }
 
 #pay {
@@ -238,9 +262,10 @@ input {
 }
 
 .error {
-  color: red;
+  color: #e51313;
   margin-top: 5px;
-  font-size: 1rem;
+  font-size: 1.2rem;
+  font-weight: bold;
 }
 
 
@@ -290,5 +315,40 @@ input {
   max-width: 100%;
   overflow-wrap: break-word;
   text-align: center;
+  color: #FCFEBD;
+  /*color: #4ec94e;*/
+}
 
+.bck-container {
+  overflow-y: auto;
+  position: fixed;
+  bottom: 0;
+  height: 100%;
+  width: 100%;
+
+  background: url(../../../assets/image/bckg-cart.webp);
+  background-size: cover;
+  left: 0;
+}
+
+.bck-container::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+
+  background-color: rgba(0, 0, 0, 0.4);
+  /*background-color:rgba(200, 200, 200, 0.2);*/
+}
+
+@media (max-width: 750px) {
+  .bck-container {
+    overflow: auto;
+
+    background: url(../../../assets/image/bckg.webp);
+    background-size: cover;
+  }
 }

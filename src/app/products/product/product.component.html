@@ -1,15 +1,18 @@
-<div *ngIf="loading" class="product-wrapper">
-  <div class="left-container">
-    <div class="loader-product"></div>
-  </div>
-</div>
+<div class="bck-container">
 
-<div *ngIf="!loading" class="product-wrapper">
-  <div class="left-container">
-    <img [src]="image" alt="Product Image" />
-    <h2>{{ name }}</h2>
-    <p>{{ description }}</p>
-    <p id="price">Price: <i>{{ price }}</i> ron</p>
-    <button class="add-product" (click)="addProduct(name)">Add to cart</button>
+  <div *ngIf="loading" class="product-wrapper">
+    <div class="left-container">
+      <div class="loader-product"></div>
+    </div>
+  </div>
+
+  <div *ngIf="!loading" class="product-wrapper">
+    <div class="left-container">
+      <img [src]="image" alt="Product Image" />
+      <h2>{{ name }}</h2>
+      <p>{{ description }}</p>
+      <p id="price">Price: <i>{{ price }}</i> ron</p>
+      <button class="add-product" (click)="addProduct(name)">Add to cart</button>
+    </div>
   </div>
 </div>

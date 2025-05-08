@@ -81,6 +81,7 @@
 
 .product-card img {
   width: 100%;
+  margin-top: 10px;
   /*height: auto;*/
   overflow: hidden;
   border-radius: 8px 8px 0 0;
@@ -119,7 +120,7 @@
   height: 100%;
   width: 100%;
 
-  background: url(../../../assets/image/bckg.jpg);
+  background: url(../../../assets/image/bckg.webp);
   background-size: cover;
   left: 0;
 }
@@ -266,7 +267,7 @@
   .bck-container {
     overflow: auto;
 
-    background: url(../../../assets/image/bckg.jpg);
+    background: url(../../../assets/image/bckg.webp);
     background-size: cover;
   }
   .bck-container::before {
@@ -288,11 +289,6 @@
     /*box-shadow: 0px 2px 5px 0px rgba(153, 136, 136, 0.5);*/
     box-shadow: 0px 0px 5px 0px rgba(225, 225, 225, 0.5);
   }
-  .bck-container::before {
-    /*background-color: rgba(0, 0, 0, 0.9);*/
-  }
-
-
 
   .filters {
     width: 100%;
