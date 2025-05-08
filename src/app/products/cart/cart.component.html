@@ -1,77 +1,80 @@
 <p *ngIf="productsExist" id="title">Your shopping cart</p>
 
 <div *ngIf="!continueForm && productsExist">
-<div class="products-container">
-  <ng-container *ngFor="let product of products">
-    <div class="product-item">
-      <div class="product-info">
-        <img [src]="getThumbnailUrl(product.image)" alt="Product Image">
-        <div class="text-info">
-          <h2>{{ product.name }}</h2>
-          <p>{{ product.description }}</p>
-        </div>
-      </div>
-
-      <div class="change-count">
-      <div class="value-container">
-        <button id="decrease-btn" (click)="decreaseValue(product.name)">-</button>
-        <div class="value">
-          {{ product.count }}
-        </div>
-        <button id="increase-btn" (click)="increaseValue(product.name)">+</button>
-      </div>
-
-        <div class="delete-container">
-          <button class="delete-btn" (click)="deleteProduct(product.name)">Delete Product</button>
+  <div class="products-container">
+    <ng-container *ngFor="let product of products">
+      <div class="product-item">
+        <div class="product-info">
+          <img [src]="getThumbnailUrl(product.image)" alt="Product Image">
+          <div class="text-info">
+            <h2>{{ product.name }}</h2>
+            <p>{{ product.description }}</p>
+          </div>
         </div>
 
+        <div class="change-count">
+          <div class="value-container">
+            <button id="decrease-btn" (click)="decreaseValue(product.name)">-</button>
+            <div class="value">
+              {{ product.count }}
+            </div>
+            <button id="increase-btn" (click)="increaseValue(product.name)">+</button>
+          </div>
+
+          <div class="delete-container">
+            <button class="delete-btn" (click)="deleteProduct(product.name)">Delete Product</button>
+          </div>
+        </div>
+
       </div>
+    </ng-container>
 
-    </div>
-  </ng-container>
+    <p *ngIf="!continueForm && productsExist" id="price"> <i> Total price: {{total}}</i> </p>
+  </div>
 
-  <p *ngIf="!continueForm && productsExist" id="price"> <i> Total price: {{total}}</i> </p>
-
+  <div id="continue-container">
+    <button id="continue" (click)="continue()">Continue</button>
+  </div>
 </div>
-
-
-<div id="continue-container">
-  <button id="continue" (click)="continue()">Continue</button>
-</div>
-</div>
-
 
 <div *ngIf="!productsExist" class="no-items">
   <p id="no-items">Your shopping cart is empty</p>
   <button id="products" (click)="redirectToProducts()">Back to products</button>
-
 </div>
-
 
 <div class="form-class" *ngIf="continueForm">
   <form [formGroup]="form" (ngSubmit)="completeOrder()">
 
-    <div class="">
+    <!-- Name Field -->
+    <div>
       <label class="email-container-label" for="name">Name</label>
       <input
         formControlName="name"
         id="name"
         type="text"
-        placeholder="nume"
+        placeholder="name"
       >
+      <div *ngIf="submitted && form.get('name')?.hasError('required')" class="error">
+        Name is required.
+      </div>
     </div>
 
-    <div class="">
-      <label class="email-container-label" for="address">Delivery address</label>
+    <!-- Address Field -->
+    <div>
+      <label class="email-container-label" for="address">Delivery address <span class="asterisk">*</span></label>
       <input
         formControlName="address"
         id="address"
         type="text"
-        placeholder="Județ, Oraș, Stradă, Nr"
+        placeholder="County, City, Street, Number"
       >
+      <div *ngIf="submitted && form.get('address')?.hasError('required')" class="error">
+        Delivery address is required.
+      </div>
     </div>
 
-    <div class="">
+    <!-- Email Field -->
+    <div>
       <label class="email-container-label" for="email">E-mail <span class="asterisk">*</span></label>
       <input
         formControlName="email"
@@ -79,21 +82,45 @@
         type="text"
         placeholder="user.name@gmail.com"
       >
+      <div *ngIf="submitted && form.get('email')?.hasError('required')" class="error">
+        Email is required.
+      </div>
+      <div *ngIf="submitted && form.get('email')?.hasError('email')" class="error">
+        Please enter a valid email.
+      </div>
     </div>
 
-    <div class="">
+    <!-- Phone Field -->
+    <div>
       <label class="email-container-label" for="phone">Phone number<span class="asterisk">*</span></label>
       <input
         formControlName="phone"
         id="phone"
-        type="number"
-        placeholder="+40********"
+        type="text"
+        placeholder="+40**********"
       >
+      <div *ngIf="submitted && form.get('phone')?.hasError('required')" class="error">
+        Phone number is required.
+      </div>
+      <div *ngIf="submitted && form.get('phone')?.hasError('pattern')" class="error">
+        Please enter a valid phone number.
+      </div>
     </div>
 
-    <button id="pay" (click)="pay()">Continue to payment</button>
+    <!-- Submit Button -->
+
+<!--    <div class="pay-row">-->
+<!--      <div *ngIf="loading" class="loading"></div>-->
+<!--      <button id="pay" type="submit">Continue to payment</button>-->
+<!--    </div>-->
+        <div class="pay-row">
+          <p *ngIf="loading" class="loading"></p>
+          <span *ngIf="loading" class="loading-text">Stripe payment form is loading, please wait...</span>
+        </div>
+    <button *ngIf="!loading" id="pay" type="submit">
+      Continue to payment
+    </button>
 
   </form>
-
-
 </div>
+

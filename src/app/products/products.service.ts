@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {environment} from "../../environments/environment";
 import {CreatePdfDto} from "./products.interface";
+import {ProductType} from "./models/product-type.enum";
 
 @Injectable({
   providedIn: 'root'
@@ -23,6 +24,11 @@ export class ProductsService {
   getProducts() {
     return this.httpClient.get<any>(this.apiProducts, this.httpOptions);
   }
+
+  getProductsFiltered(type: ProductType) {
+    return this.httpClient.get<any>(`${this.apiProducts}/filtered/?type=${type}`, this.httpOptions);
+  }
+
 
   getProduct(name: string) {
     return this.httpClient.get<any>(this.apiProducts + '/name/' + name, this.httpOptions);

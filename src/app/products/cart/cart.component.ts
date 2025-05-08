@@ -25,6 +25,8 @@ export class CartComponent implements OnInit{
   form!: FormGroup;
   productsExist: boolean = false;
   total: number = 0;
+  submitted: boolean = false;
+  loading: boolean = false;
 
   async ngOnInit() {
     this.getAllProductsFromLocalStorage();
@@ -33,16 +35,35 @@ export class CartComponent implements OnInit{
       this.productsExist = true;
     }
 
+    // this.form = new FormGroup({
+    //   address: new FormControl(''),
+    //   name: new FormControl(''),
+    //   email: new FormControl('', {
+    //     validators: [Validators.required]
+    //   }),
+    //   phone: new FormControl('', {
+    //     validators: [Validators.required]
+    //   }),
+    // });
+
     this.form = new FormGroup({
-      address: new FormControl(''),
+      address: new FormControl('', [Validators.required, this.addressValidator]),
       name: new FormControl(''),
-      email: new FormControl('', {
-        validators: [Validators.required]
-      }),
-      phone: new FormControl('', {
-        validators: [Validators.required]
-      }),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\d{10}$/)
+      ]),
     });
+
+  }
+
+  addressValidator(control: FormControl): { [key: string]: any } | null {
+    const value = control.value;
+    if (!value || value.trim().length === 0) {
+      return { invalidAddress: 'Address cannot be empty' };
+    }
+    return null;
   }
 
 
@@ -205,9 +226,17 @@ export class CartComponent implements OnInit{
 
   continue() {
     this.continueForm = true;
+    console.log('pressed continue')
   }
 
-  completeOrder() {
+  async completeOrder() {
+
+    this.submitted = true;
+    if (this.form.invalid) {
+      return;
+    }
+    this.loading = true;
+    await this.pay();
 
   }
 

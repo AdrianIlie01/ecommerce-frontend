@@ -2,23 +2,109 @@
   <div class="title-cart">
     <p class="title">Online Shop</p>
 
-    <span (click)="redirectToCart()" class="icon"
-      ><fa-icon icon="shopping-cart"></fa-icon
-    ></span>
+    <span (click)="redirectToCart()" class="icon">
+      <fa-icon icon="shopping-cart"></fa-icon>
+      <span [ngClass]="{ 'has-products': true, 'invisible': productCount === 0 }" class="has-products">{{productCount}}</span>
+    </span>
   </div>
 
-  <div class="product-list">
-    <div
-      (click)="redirectToProduct(product.name)"
-      class="product-card"
-      *ngFor="let product of products"
+  <div  [ngClass]="{ 'filter-open': showFilters }"  class= "filter-sort">
+
+    <div class="filter">
+      <span id="filter"
+            (click)="displayFilters()"
+      >
+        <fa-icon icon="filter" class="icon-sort-filter"></fa-icon>
+        <span class="filter-sort-title">Filters</span>
+      </span>
+    </div>
+
+    <div  class="filter" id="sort"
+          (click)="sort()"
     >
-      <img [src]="getThumbnailUrl(product.image)" alt="Product Image" />
-      <h2>{{ product.name }}</h2>
-      <p>{{ product.description }}</p>
-      <button class="view-product" (click)="redirectToProduct(product.name)">
-        Details
-      </button>
+
+      <span *ngIf="sortAsc">
+        <fa-icon icon="sort-numeric-asc" class="icon-sort-filter"></fa-icon>
+        <span>Price: Low to High</span>
+      </span>
+
+      <span *ngIf="!sortAsc">
+        <fa-icon icon="sort-numeric-desc" class="icon-sort-filter"></fa-icon>
+        <span class="filter-sort-title">Price: High to Low</span>
+      </span>
+    </div>
+
+  </div>
+
+  <div *ngIf="showFilters" class="filters" >
+    <div class="filters-scroll">
+
+      <div *ngFor="let type of ProductType | keyvalue" (click)="applyFilter(type.value)" class="filter-option">
+        <span>{{ type.value | titlecase }}</span>  <!-- Afișează tipul cu prima literă mare -->
+      </div>
     </div>
   </div>
-</div>
+
+<!--  <div *ngIf="loading" class="loading-overlay">-->
+<!--    <span class="products-loader"></span>-->
+
+<!--    <div class="loading-message">-->
+<!--      Loading may take a while as the server is starting up.-->
+<!--    </div>-->
+<!--  </div>-->
+      <div class="product-list"  [ngClass]="{ 'products-no-scroll': showFilters }">
+
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+
+
+        <div
+          class="product-card"
+          *ngFor="let product of products"
+        >
+
+          <div (click)="redirectToProduct(product.name)" >
+
+<!--            <div *ngIf="imageLoadingMap[product.name]" class="img-loader"></div>-->
+
+<!--            &lt;!&ndash; Imaginea e mereu prezentă în DOM, dar ascunsă cât timp nu e încărcată &ndash;&gt;-->
+<!--            <img-->
+<!--              [src]="getThumbnailUrl(product.image)"-->
+<!--              alt="Product Image"-->
+<!--              [hidden]="imageLoadingMap[product.name]"-->
+<!--              (load)="imageLoadingMap[product.name] = false"-->
+<!--              (error)="imageLoadingMap[product.name] = false"-->
+<!--            />-->
+
+
+            <img [src]="getThumbnailUrl(product.image)" alt="Product Image" />
+                <h2>{{ product.name }}</h2>
+            <p class="price">Price: {{ product.price }} ron</p>
+
+          </div>
+
+
+          <div class="product-buttons">
+            <button class="view-product" (click)="redirectToProduct(product.name)">
+              Details
+            </button>
+
+            <button class="view-product" (click)="addProduct(product)">
+              Add Product
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div (click)="closeFilters()" *ngIf="showFilters" id="overlay"></div>
+
+
+    </div>
+

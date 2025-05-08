@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LoadingService} from "./services/loading.service";
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ecommerce-front';
+  constructor(public loadingService: LoadingService) {}
+  title = 'ecommerce';
 }

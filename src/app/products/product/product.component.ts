@@ -21,12 +21,11 @@ export class ProductComponent implements OnInit {
   name!: string;
   description!: string;
   price!: string;
+  loading: boolean = true;
 
   async ngOnInit() {
     this.route.params.subscribe(params => {
       this.productName = params['name'];
-
-      console.log(this.productName);
 
       this.productsService.getProduct(this.productName).subscribe(async (data: any) => {
 
@@ -38,7 +37,7 @@ export class ProductComponent implements OnInit {
           this.description = this.product.description;
           this.price = this.product.price;
         }
-
+        this.loading = false;
       });
     });
 

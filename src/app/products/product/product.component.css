@@ -2,7 +2,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0px 0px 5px 0px rgba(225, 225, 225, 0.5);
+  border-radius: 9px;
+  background-color: white;
+  margin: 0 auto;
+
 }
+
 
 .add-product {
   font-size: 1.2rem;
@@ -34,6 +42,8 @@ p {
     margin-left: 20px;
     margin-right: 20px;
   }
+
+
 }
 
 
@@ -41,8 +51,62 @@ p {
   img {
     width: 100%;
   }
+
 }
 
 #price {
   color: #4ec94e;
 }
+
+.product-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.left-container img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.loader-product {
+  width: 100%;
+  height: 625px; /* Aceeași înălțime ca .left-container dacă e cazul */
+  position: relative;
+  background: #fff;
+  box-sizing: border-box;
+}
+
+@media (max-height: 700px) {
+  .loader-product {
+    height: 550px;
+  }
+}
+
+
+.loader-product::after {
+  content: '';
+  width: calc(100% - 30px);
+  height: calc(100% - 15px);
+  top: 15px;
+  left: 15px;
+  position: absolute;
+  background-image: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.5) 50%, transparent 100%),
+  linear-gradient(#DDD 100px, transparent 0),
+  linear-gradient(#DDD 16px, transparent 0),
+  linear-gradient(#DDD 50px, transparent 0);
+  background-repeat: no-repeat;
+  background-size: 75px 175px, 100% 100px, 100% 16px, 100% 30px;
+  background-position: -185px 0, center 0, center 115px, center 142px;
+  box-sizing: border-box;
+  animation: animloader 1s linear infinite;
+}
+
+@keyframes animloader {
+  to {
+    background-position: 185px 0, center 0, center 115px, center 142px;
+  }
+}
+
