@@ -18,7 +18,7 @@
 }
 
 .title {
-  color: white;
+  color: #FCFEBD;
   text-align: center;
   font-size: 3rem;
   font-weight: bold;
@@ -126,7 +126,7 @@
 
 .bck-container::before {
   content: "";
-  position: sticky;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
@@ -136,6 +136,7 @@
   background-color: rgba(0, 0, 0, 0.4);
   /*background-color:rgba(200, 200, 200, 0.2);*/
 }
+
 .price {
   color: #4ec94e!important;
   text-align: center!important;
@@ -147,7 +148,7 @@
 }
 
 .filter {
-  color: white;
+  color: #fff;
   margin-left: 20px;
 
   display: flex;
@@ -170,7 +171,7 @@
 .has-products {
   width: 15px;
   height: 15px;
-  background-color: red;
+  background-color: #ff3d00;
   color: white;
   border-radius: 50%;
   display: inline-flex;
@@ -214,7 +215,8 @@
 }
 
 .filter:hover {
-  color: #4ec94e;
+  /*color: #4ec94e;*/
+  color: #1ce33c;
 }
 
 .filters-scroll {
@@ -228,8 +230,19 @@
   padding: 10px;
   cursor: pointer;
   border: 1px solid #ddd;
-  border-radius: 5px;
 
+  /*border-radius: 5px;*/
+
+}
+
+.filter-option:nth-child(1) {
+
+  border-top-right-radius: 35px;
+}
+
+.filter-option:last-child {
+
+  border-bottom-right-radius: 35px;
 }
 
 .filter-option:hover {
