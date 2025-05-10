@@ -111,11 +111,11 @@ h2 {
 }
 
 #price {
-  width: 98%;
+  width: 95%;
   text-align: right;
-  font-size: 1.1rem;
-  font-weight: bold;
+  /*font-weight: bold;*/
   color: #11de11;
+  margin: 10px auto 15px;
 }
 
 #continue-container {
@@ -145,6 +145,10 @@ h2 {
   padding: 10px 20px;
   width: 250px;
   margin-bottom: 15px;
+}
+
+#continue {
+  width: 270px!important;
 }
 
 #continue:hover, #products:hover, #pay:hover {
@@ -264,7 +268,7 @@ input {
 .error {
   color: #e51313;
   margin-top: 5px;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   font-weight: bold;
 }
 
@@ -350,5 +354,9 @@ input {
 
     background: url(../../../assets/image/bckg.webp);
     background-size: cover;
+  }
+
+  .error {
+    font-size: 1rem;
   }
 }
