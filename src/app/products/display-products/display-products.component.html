@@ -45,15 +45,13 @@
     </div>
   </div>
 
-<!--  <div *ngIf="loading" class="loading-overlay">-->
-<!--    <span class="products-loader"></span>-->
-
-<!--    <div class="loading-message">-->
-<!--      Loading may take a while as the server is starting up.-->
-<!--    </div>-->
-<!--  </div>-->
       <div class="product-list"  [ngClass]="{ 'products-no-scroll': showFilters }">
 
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
+        <div *ngIf="loading" class="loader"></div>
         <div *ngIf="loading" class="loader"></div>
         <div *ngIf="loading" class="loader"></div>
         <div *ngIf="loading" class="loader"></div>
@@ -71,17 +69,6 @@
         >
 
           <div (click)="redirectToProduct(product.name)" >
-
-<!--            <div *ngIf="imageLoadingMap[product.name]" class="img-loader"></div>-->
-
-<!--            &lt;!&ndash; Imaginea e mereu prezentă în DOM, dar ascunsă cât timp nu e încărcată &ndash;&gt;-->
-<!--            <img-->
-<!--              [src]="getThumbnailUrl(product.image)"-->
-<!--              alt="Product Image"-->
-<!--              [hidden]="imageLoadingMap[product.name]"-->
-<!--              (load)="imageLoadingMap[product.name] = false"-->
-<!--              (error)="imageLoadingMap[product.name] = false"-->
-<!--            />-->
 
 
             <img [src]="getThumbnailUrl(product.image)" alt="Product Image" />

@@ -35,17 +35,6 @@ export class CartComponent implements OnInit{
       this.productsExist = true;
     }
 
-    // this.form = new FormGroup({
-    //   address: new FormControl(''),
-    //   name: new FormControl(''),
-    //   email: new FormControl('', {
-    //     validators: [Validators.required]
-    //   }),
-    //   phone: new FormControl('', {
-    //     validators: [Validators.required]
-    //   }),
-    // });
-
     this.form = new FormGroup({
       address: new FormControl('', [Validators.required, this.addressValidator]),
       name: new FormControl(''),
