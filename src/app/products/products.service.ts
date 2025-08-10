@@ -15,6 +15,7 @@ export class ProductsService {
 
   private apiMail = `${environment.urlBackend}/mail`;
   private apiProducts = `${environment.urlBackend}/products`;
+  private imageCloudApi = environment.imageCloudApi;
   httpOptions = {
     headers: new HttpHeaders({
       'Content-Type': 'application/json'
@@ -35,7 +36,7 @@ export class ProductsService {
   }
 
   getThumbnailUrl(image: string) {
-    return `${environment.urlBackend}/products/image/${image}`;
+    return `${this.imageCloudApi}/${image}`;
   }
 
   createPdf(createPdf: CreatePdfDto) {
