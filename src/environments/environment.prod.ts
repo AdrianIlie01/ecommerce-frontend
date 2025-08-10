@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
   // urlBackend: 'https://ecommerce-backend-zclv.onrender.com',
-  urlBackend: 'https://ecommerce-backend-adrianilie01s-projects.vercel.app',
+  urlBackend: 'https://ecommerce-backend-psi-gold.vercel.app',
   imageCloudApi: 'https://res.cloudinary.com/dr5b9dgkf/image/upload/ecommerce-images',
   // urlBackend: 'http://localhost:3002',
 
