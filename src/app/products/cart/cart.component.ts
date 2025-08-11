@@ -41,7 +41,7 @@ export class CartComponent implements OnInit{
       email: new FormControl('', [Validators.required, Validators.email]),
       phone: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^\d{10}$/)
+        Validators.pattern(/^(\+40\s?\d{3}\s?\d{3}\s?\d{3}|(\+40)?0?\d{3}\s?\d{3}\s?\d{3}|\d{10})$/)
       ]),
     });
 
